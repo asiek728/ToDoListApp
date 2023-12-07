@@ -13,3 +13,18 @@ export const TodoProvider = ({ children }) => {
 };
 
 export const useTodo = () => useContext(TodoContext)
+
+
+const TodoFilterContext = createContext()
+
+export const TodoFilterProvider = ({ children }) => {
+  const [filteredTodos, setFilteredTodos] = useState([]);
+
+  return (
+    <TodoFilterContext.Provider value={{ filteredTodos, setFilteredTodos }}>
+      {children}
+    </TodoFilterContext.Provider>
+  );
+};
+
+export const useTodoFilter = () => useContext(TodoFilterContext)

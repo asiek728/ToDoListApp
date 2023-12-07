@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { TodoForm, TodoList } from './components';
-import { useTodo } from './contexts';
+import { useTodo, useTodoFilter } from './contexts';
 
 function App() {
   const [inputText, setInputText] = useState('');
   const [status, setStatus] = useState('all');
-  const [filteredTodos, setFilteredTodos] = useState([]);
+
   const { todos, setTodos } = useTodo()
+  const {filteredTodos, setFilteredTodos} = useTodoFilter()
 
 
   useEffect(() => {
@@ -28,7 +29,7 @@ function App() {
       <div>
         <header>Sarah's Todo List</header>
         <TodoForm inputText={inputText} setInputText={setInputText}  setStatus={setStatus} />
-        <TodoList filteredTodos={filteredTodos} />
+        <TodoList />
       </div>
   );
 }

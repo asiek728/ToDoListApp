@@ -1,9 +1,11 @@
 import TodoItem from "../TodoItem";
-import { useTodo } from '../../contexts'
+import { useTodo, useTodoFilter } from '../../contexts'
 
-function TodoList({ filteredTodos }) {
+function TodoList() {
 
 	const { todos, setTodos } = useTodo()
+	const { filteredTodos, setFilteredTodos } = useTodoFilter()
+
 
 	function deleteTodo(todo) {
 		let filteredTodos = todos.filter(el => el !== todo);
